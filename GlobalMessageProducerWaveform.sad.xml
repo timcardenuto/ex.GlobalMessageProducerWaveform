@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softwareassembly PUBLIC "-//JTRS//DTD SCA V2.2.2 SAD//EN" "softwareassembly.dtd">
+<softwareassembly id="DCE:b31999ec-c3da-4dec-ab33-7a3aa0c8e3da" name="ex.GlobalMessageProducerWaveform">
+  <componentfiles>
+    <componentfile id="MessageProducer_e362fa9e-da17-4162-901e-b93bd50983eb" type="SPD">
+      <localfile name="/components/ex/MessageProducer/ex.MessageProducer.spd.xml"/>
+    </componentfile>
+  </componentfiles>
+  <partitioning>
+    <componentplacement>
+      <componentfileref refid="MessageProducer_e362fa9e-da17-4162-901e-b93bd50983eb"/>
+      <componentinstantiation id="MessageProducer_1">
+        <usagename>MessageProducer_1</usagename>
+        <findcomponent>
+          <namingservice name="MessageProducer_1"/>
+        </findcomponent>
+      </componentinstantiation>
+    </componentplacement>
+  </partitioning>
+  <assemblycontroller>
+    <componentinstantiationref refid="MessageProducer_1"/>
+  </assemblycontroller>
+  <connections>
+    <connectinterface id="connection_1">
+      <usesport>
+        <usesidentifier>geo_out</usesidentifier>
+        <componentinstantiationref refid="MessageProducer_1"/>
+      </usesport>
+      <componentsupportedinterface>
+        <supportedidentifier>IDL:ExtendedEvent/MessageEvent:1.0</supportedidentifier>
+        <findby>
+          <domainfinder name="GlobalGeolocations" type="eventchannel"/>
+        </findby>
+      </componentsupportedinterface>
+    </connectinterface>
+  </connections>
+</softwareassembly>
